@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: ТВОЙ_ЛОГИН/ИМЯ_РЕПОЗИТОРИЯ
+  repo: manualchik/v2
   branch: main
 
 media_folder: "images/uploads"
