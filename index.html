@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" id="metaTheme" content="#0b0f14">
+<meta name="description" id="metaDesc" content="Professional profile">
+<title id="pageTitle">Elite Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Geist+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-orb bg-orb--a" aria-hidden="true"></div>
+<div class="bg-orb bg-orb--b" aria-hidden="true"></div>
+<div class="bg-orb bg-orb--c" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+
+<!-- TOPBAR -->
+<header class="topbar" id="topbar" role="banner">
+  <div class="topbar__inner">
+    <span class="topbar__status" id="adminLabel" aria-live="polite">
+      <svg class="topbar__status-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span class="topbar__status-text">View mode</span>
+    </span>
+    <nav class="topbar__nav" aria-label="Top actions">
+      <button class="tbtn" id="themeBtn" aria-label="Switch theme">◐</button>
+      <button class="tbtn" id="shareBtn" aria-label="Share profile">⬆︎ Share</button>
+      <button class="tbtn" id="adminLoginBtn">Admin</button>
+      <button class="tbtn tbtn--accent hidden" id="adminLogoutBtn">Logout</button>
+    </nav>
+  </div>
+  <!-- progress bar for page scroll -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+</header>
+
+<main class="container" id="mainContent">
+
+  <!-- PROFILE CARD -->
+  <section class="profile reveal" id="profileSection" aria-label="Profile">
+    <div class="profile__bg" id="profileBg" aria-hidden="true"></div>
+    <div class="profile__glow" aria-hidden="true"></div>
+    <div class="profile__scanner" aria-hidden="true"></div>
+
+    <div class="profile__body">
+
+      <div class="profile__header">
+        <!-- AVATAR -->
+        <div class="avatar" id="avatarWrap">
+          <div class="avatar__halo" aria-hidden="true"></div>
+          <div class="avatar__orbit" aria-hidden="true"></div>
+          <img id="avatarImg"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect fill='%2311161d' width='80' height='80'/%3E%3Ccircle fill='%231f2933' cx='40' cy='30' r='18'/%3E%3Cellipse fill='%231f2933' cx='40' cy='72' rx='28' ry='20'/%3E%3C/svg%3E"
+            alt="Profile avatar" width="80" height="80" loading="eager">
+          <label class="avatar__btn admin-only hidden" title="Upload photo" aria-label="Upload avatar">
+            <input type="file" accept="image/*" id="avatarInput" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </label>
+        </div>
+
+        <!-- BADGES -->
+        <div class="profile__badges">
+          <button class="avail-pill avail--yes" id="availBadge" aria-label="Availability status">
+            <span class="avail-dot" aria-hidden="true"></span>
+            <div class="avail-toggle" aria-hidden="true"><div class="avail-thumb"></div></div>
+            <span id="availText">Online</span>
+          </button>
+          <span class="view-pill" aria-label="Profile views">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span id="viewCount">0</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="profile__info">
+        <h1 class="nickname" id="nickname" contenteditable="false" spellcheck="false">Your Name</h1>
+        <p class="profession" id="profession" contenteditable="false" spellcheck="false">Professional Title · Location</p>
+        <p class="bio" id="bio" contenteditable="false" spellcheck="false">A short description about yourself that tells clients and employers what makes you unique.</p>
+      </div>
+
+      <!-- STATS ROW -->
+      <div class="stats-row" id="statsRow" aria-label="Profile statistics">
+        <div class="stat-chip">
+          <span class="stat-chip__val" id="qs-skills">0</span>
+          <span class="stat-chip__lbl">Skills</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip__val" id="qs-projects">0</span>
+          <span class="stat-chip__lbl">Projects</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip__val" id="qs-links">0</span>
+          <span class="stat-chip__lbl">Links</span>
+        </div>
+        <div class="stat-chip">
+          <span class="stat-chip__val" id="qs-contacts">0</span>
+          <span class="stat-chip__lbl">Contacts</span>
+        </div>
+      </div>
+
+      <!-- ADMIN ACTIONS -->
+      <div class="profile__actions admin-only hidden" id="profileActions" role="toolbar" aria-label="Profile admin actions">
+        <button class="btn btn--primary btn--sm" id="editBtn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Edit
+        </button>
+        <button class="btn btn--ghost btn--sm" id="bgBtn" title="Change background">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          BG
+        </button>
+        <button class="btn btn--ghost btn--sm" id="availBtn">Toggle Status</button>
+        <button class="btn btn--ghost btn--sm" id="changePwBtn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password
+        </button>
+        <button class="btn btn--ghost btn--sm" id="exportBtn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="card reveal" style="--d:.06s" aria-label="Contacts">
+    <div class="card__head">
+      <h2 class="card__title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        Contacts
+        <span class="count-badge" id="contacts-count">0</span>
+      </h2>
+      <button class="btn btn--primary btn--xs admin-only hidden" id="addContactBtn">+ Add</button>
+    </div>
+    <div class="contacts-grid" id="contactsGrid"></div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="card reveal" style="--d:.10s" aria-label="Skills">
+    <div class="card__head">
+      <h2 class="card__title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Skills
+        <span class="count-badge" id="skills-count">0</span>
+      </h2>
+      <div style="display:flex;gap:6px;align-items:center">
+        <button class="tbtn tbtn--sm" id="skillsViewBtn" title="Toggle view">⊞</button>
+        <button class="btn btn--primary btn--xs admin-only hidden" id="addSkillBtn">+ Add</button>
+      </div>
+    </div>
+    <div class="skills-list" id="skillsList"></div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="card reveal" style="--d:.14s" aria-label="Links">
+    <div class="card__head">
+      <h2 class="card__title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        Links
+        <span class="count-badge" id="links-count">0</span>
+      </h2>
+      <button class="btn btn--primary btn--xs admin-only hidden" id="addLinkBtn">+ Add</button>
+    </div>
+    <div class="links-toolbar" id="linksToolbar">
+      <div class="search-wrap">
+        <svg class="search-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="linksSearch" type="search" placeholder="Search…" autocomplete="off" aria-label="Search links">
+      </div>
+      <select class="sort-select" id="linksSort" aria-label="Sort links">
+        <option value="custom">Custom</option>
+        <option value="az">A → Z</option>
+        <option value="za">Z → A</option>
+        <option value="clicks">Most clicked</option>
+      </select>
+    </div>
+    <ul class="links-list" id="linksList" role="list"></ul>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="card reveal" style="--d:.18s" aria-label="Portfolio">
+    <div class="card__head">
+      <h2 class="card__title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Portfolio
+        <span class="count-badge" id="portfolio-count">0</span>
+      </h2>
+      <button class="btn btn--primary btn--xs admin-only hidden" id="addProjectBtn">+ Add</button>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid"></div>
+  </section>
+
+</main>
+
+<!-- SHARE DRAWER -->
+<div class="drawer hidden" id="shareDrawer" role="dialog" aria-modal="true" aria-label="Share profile">
+  <div class="drawer__backdrop" id="shareBackdrop"></div>
+  <div class="drawer__panel">
+    <div class="drawer__hdr">
+      <span class="drawer__title">Share Profile</span>
+      <button class="icon-btn" id="shareClose" aria-label="Close">✕</button>
+    </div>
+    <div class="og-preview" id="ogPreview">
+      <div class="og-preview__img" id="ogImg" aria-hidden="true"></div>
+      <div class="og-preview__info">
+        <div class="og-preview__name" id="ogName"></div>
+        <div class="og-preview__role" id="ogRole"></div>
+        <span class="avail-pill avail--yes" id="ogBadge"><span class="avail-dot"></span><div class="avail-toggle" aria-hidden="true"><div class="avail-thumb"></div></div> Available</span>
+      </div>
+    </div>
+    <div class="share-grid">
+      <button class="share-tile" id="shareCopyBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span>Copy Link</span>
+      </button>
+      <button class="share-tile" id="shareNativeBtn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        <span>Share…</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX for portfolio -->
+<div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Project details">
+  <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+  <div class="lightbox__box" id="lightboxBox"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="false"></div>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__box">
+    <button class="icon-btn modal__close" id="modalClose" aria-label="Close dialog">✕</button>
+    <h3 class="modal__title" id="modalTitle"></h3>
+    <div class="modal__body" id="modalBody"></div>
+    <div class="modal__footer" id="modalFooter">
+      <button class="btn btn--ghost btn--sm" id="modalCancel">Cancel</button>
+      <button class="btn btn--primary btn--sm" id="modalConfirm">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
