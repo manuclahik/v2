@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: ТВОЙ_ЛОГИН/ИМЯ_РЕПОЗИТОРИЯ
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blocks"
+    label: "Блоки"
+    folder: "content/blocks"
+    create: true
+    fields:
+      - { name: "title", label: "Заголовок", widget: "string" }
+      - { name: "text", label: "Текст", widget: "text" }
+      - { name: "image", label: "Картинка", widget: "image" }
